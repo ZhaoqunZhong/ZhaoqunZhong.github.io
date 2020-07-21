@@ -31,14 +31,14 @@ I don't know yet the reason why choose \\(\tau=1s\\) and \\(\tau=3s\\), but let'
 
 ## 2. IMU calibration
 
-[This paper](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6907297) describe a steady movement calibration method. The author also shared their [code](https://bitbucket.org/alberto_pretto/imu_tk/src/master/) on bitbucket. Their code has the functionality of computing Allan variance and the calibration of scale and coordinate-misalignment error also. 
+[This paper](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6907297) describe a steady movement calibration method. The author also shared their [code](https://bitbucket.org/alberto_pretto/imu_tk/src/master/) on bitbucket, which has the functionality of computing Allan variance and the calibration of scale and coordinate-misalignment error also. 
 
 ## 3. Continuous noise parameters discretization
 
 Currently, I've only found two literatures that explain this process in detail. They are 
 
-* Joan Sola's book <Quaternion kinematics for the error-state Kalman filter>
-* A technical report <Indirect Kalman Filter for 3D Attitude Estimation> from MARS LAB
+* Joan Sola's book <<Quaternion kinematics for the error-state Kalman filter>>
+* A technical report <<Indirect Kalman Filter for 3D Attitude Estimation>> from MARS LAB
 
 I was really confused by a detail in Joan Sola's book, which is in 
 
@@ -48,4 +48,4 @@ Why the noise terms are companied with \\(\Delta t^{2}\\) while the bias terms w
 
 ![](/images/bias-deltat-explain.png)
 
-Which essentially made the noise term constant during the integration interval. But mathematically, the Angle Random Walk(noise) and Rate Random Walk(directive of bias) terms are of the same type -- white noise. We can of caurse assume any model type of these terms, but declaing one to be white noise and then fix it during integration seems a bit contradictory. If we stick to the assumption that they are both white noise, then the result noise covariance matrix should have both noise terms acompanied with \\(\Delta t\\), which is consistent with the derivation from MARS LAB's report. 
+Which essentially made the noise term constant during the integration interval. But mathematically, the Angle Random Walk(noise) and Rate Random Walk(directive of bias) terms are of the same type -- white noise. We can of caurse assume any model type of these terms, but declaing one to be white noise and then fix it during integration seems a bit contradictory. If we stick to the assumption that they are both white noise, then the result noise covariance matrix should have both noise terms acompanied with \\(\Delta t\\), which is consistent with the derivation from MARS LAB's report(equation 188-192). 
