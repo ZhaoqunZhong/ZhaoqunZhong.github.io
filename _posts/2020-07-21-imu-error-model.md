@@ -20,5 +20,5 @@ This [blog](https://www.numerickly.com/2019/10/03/allan-variance-and-its-use-in-
 
 $$\theta^{2}(\tau)=\frac{1}{2 \tau^{2}(N-2 m)} \sum_{k=1}^{N-2 m}\left(\theta_{\mathrm{K}+2 m}-2 \theta_{\mathrm{K}+m}+\theta_{\mathrm{K}}\right)^{2}$$
 
-
+$m$ is the number of samples in each cluster, notice that &theta& is angle instead of angular speed. So $$\theta^{2}(\tau)&& is just average of square of $$omega$$ sample mean difference of neighbouring clusters. 
 
