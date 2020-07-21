@@ -2,7 +2,6 @@
 layout: post
 title: IMU Noise Model
 categories: [SLAM, SensorFusion]
-usemathjax: true
 ---
 
 Any localization application that uses IMU as an information source can't escape from asking these fundamental questions:
