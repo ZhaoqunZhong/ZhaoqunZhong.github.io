@@ -17,6 +17,7 @@ https://github.com/RainerKuemmerle/g2o
 2. Create a new folder build
 
 3. Edit build_android.sh
+
 ```sh
 cd build
 rm -r *
