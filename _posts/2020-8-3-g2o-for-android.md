@@ -4,6 +4,8 @@ title: Build g2o for Android
 categories: [SLAM, Android]
 ---
 
+g2o is a popular optimization library in Slam field. Unlike google ceres solver, it compiles Csparse as an external lib instead of making it a system dependency. 
+
 ## Get g2o source code 
 
 https://github.com/RainerKuemmerle/g2o
@@ -15,13 +17,12 @@ https://github.com/RainerKuemmerle/g2o
 2. Create a new folder build
 
 3. Edit build_android.sh
-
 ```sh
 cd build
 rm -r *
 
 cmake \
--DANDROID_ABI=arm64-v8a \ 
+-DANDROID_ABI=arm64-v8a \
 -DANDROID_NDK=/home/zhaoqun/Android/Sdk/ndk/21.3.6528147 \
 -DCMAKE_TOOLCHAIN_FILE=/home/zhaoqun/Android/Sdk/ndk/21.3.6528147/build/cmake/android.toolchain.cmake \
 -DANDROID_NATIVE_API_LEVEL=27 \ #minimal Android api level you want to support
