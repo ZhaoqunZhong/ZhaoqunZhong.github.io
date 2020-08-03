@@ -16,7 +16,7 @@ https://github.com/RainerKuemmerle/g2o
 
 3. Edit build_android.sh
 
-```
+```sh
 cd build
 rm -r *
 

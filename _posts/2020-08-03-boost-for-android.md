@@ -15,7 +15,7 @@ Ubuntu 18
 1. Make sure Android NDK is installed, via Android Studio or stand-alone installation. $(NDK_ROOT) is needed for compilation.
 
 2. Read build_android.sh and config compilation options as illustrated. 
-```
+```sh
 ./build-android.sh $(NDK_ROOT) \
 --boost=1.73.0 \
 --with-libraries=serialization \
