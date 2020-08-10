@@ -4,7 +4,7 @@ title: Redirect std::cout to Android log
 categories: [Android, cpp]
 ---
 
-We know that std::cout prints nothing in Android's logcat. Sometimes we use third-party libraries that was originally developed in desktop environment, thus have tons of std::cout debug output in their code. It's tedious to find them one by one and change the code to replace them with android_log_write() function. We can of course uncomment them all, but what if there are important debug imformation we still need print. Here comes the rescue from an awsome [answer](https://stackoverflow.com/questions/8870174/is-stdcout-usable-in-android-ndk) to a stack overflow question. 
+We know that std::cout prints nothing in Android's logcat. Sometimes we use third-party libraries that was originally developed in desktop environment, thus have tons of std::cout debug output in their code. It's tedious to find them one by one and change the code to replace them with android_log_write() function. We can of course uncomment them all, but what if there are important debug imformation we still need to print. Here comes the rescue from an awsome [answer](https://stackoverflow.com/questions/8870174/is-stdcout-usable-in-android-ndk) to a StackOverflow question. 
 
 ## How to use
 
