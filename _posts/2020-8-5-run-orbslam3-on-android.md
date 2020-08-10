@@ -43,6 +43,7 @@ There exists newer optimized version of the DBOW2/DBOW3, at https://github.com/r
 It takes about 1 min to load the >100Mb .txt vocabulary file on Android, while the .bin version takes about 1s. Notice that Vins-Mono used the .bin verison for their relocalization. 
 
 ## Compiler and language related errors (unsolved)
+
 There are two compile errors related to Eigen3.3.7 library and c++11 std map library, both caused by the assert action in the library code. Solutions:
 1. eigen-3.3.7\Eigen\src\Core\AssignEvaluator.h
 	Comment out line 833 
