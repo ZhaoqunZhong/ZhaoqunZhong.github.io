@@ -11,7 +11,7 @@ This post keeps track of how I implemented the recently released OrbSlam 3 on an
 - Typical structiure uses **cmake_minimum_required(), project(), add_library(), target_link_libraries(), target_include_directories()**
 - add_subdirectory() will inherit the ${} macros defined before it, and the parent file which includes the add_subdirectory() can refer to the library it generates directly. 
 - Proper command to copy intermediate shared library files to a location is 
-```
+```sh
 add_custom_command(TARGET shared-library-name POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:shared-library-name> ${PROJECT_SOURCE_DIR}/lib/new-shared-library-name(e.g. shared-library-name or libshared-library-name.so) 
         )
@@ -45,13 +45,13 @@ It takes about 1 min to load the >100Mb .txt vocabulary file on Android, while t
 There are two compile errors related to Eigen3.3.7 library and c++11 std <map> library, both caused by the assert action in the library code. Solutions:
 1. eigen-3.3.7\Eigen\src\Core\AssignEvaluator.h
 	Comment out line 833 
-	```
-	EIGEN_STATIC_ASSERT_SAME_MATRIX_SIZE(ActualDstTypeCleaned,Src)
-	```
+```cpp
+EIGEN_STATIC_ASSERT_SAME_MATRIX_SIZE(ActualDstTypeCleaned,Src)
+```
 2. ${ndk root}\toolchains\llvm\prebuilt\windows-x86_64\sysroot\usr\include\c++\v1\map
 	Comment out line 911
-	```
-	static_assert((is_same<typename allocator_type::value_type, value_type>::value),
+```cpp
+static_assert((is_same<typename allocator_type::value_type, value_type>::value),
                   "Allocator::value_type must be same type as value_type");
-    ```
+```
 Although this temporary fixes the compile errors, it's really terrible to mess up with the library source code, which might affects other projects on this computer. 
