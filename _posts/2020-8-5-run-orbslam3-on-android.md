@@ -28,6 +28,7 @@ Orbslam3 used boost serialization in its code. I already mentioned how to build 
 	The author answered the question in the repo's issue section. The main reason was his personal choice and his task at hand. 
 2. Why use the generated wserialization instead of serialization file
 	The w prefix stands for "wide char" version, which has something to do with the target platform data type. I tried both, only the w version worked for Android 10, I didn't dig the reason though. 
+
 There are also other choices for the serialization task, like Google protobuf, which should has a better support for Android platform.
 
 ### g2o
@@ -42,7 +43,7 @@ There exists newer optimized version of the DBOW2/DBOW3, at https://github.com/r
 It takes about 1 min to load the >100Mb .txt vocabulary file on Android, while the .bin version takes about 1s. Notice that Vins-Mono used the .bin verison for their relocalization. 
 
 ## Compiler and language related errors (unsolved)
-There are two compile errors related to Eigen3.3.7 library and c++11 std <map> library, both caused by the assert action in the library code. Solutions:
+There are two compile errors related to Eigen3.3.7 library and c++11 std map library, both caused by the assert action in the library code. Solutions:
 1. eigen-3.3.7\Eigen\src\Core\AssignEvaluator.h
 	Comment out line 833 
 ```cpp
