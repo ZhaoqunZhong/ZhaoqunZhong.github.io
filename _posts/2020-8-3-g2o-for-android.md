@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Build g2o for Android
+title: Build g2o for Android 10
 categories: [SLAM, Android]
 ---
 
