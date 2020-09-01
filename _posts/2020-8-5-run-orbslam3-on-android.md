@@ -57,3 +57,15 @@ static_assert((is_same<typename allocator_type::value_type, value_type>::value),
                   "Allocator::value_type must be same type as value_type");
 ```
 Although this temporary fixes the compile errors, it's really terrible to mess up with the library source code, which might affects other projects on this computer. 
+
+### Update
+
+About the static_assert errors, according to Eigen's doc about [Assertions](https://eigen.tuxfamily.org/dox/TopicAssertions.html)
+
+>Disabling assertions
+
+>Assertions cost run time and can be turned off. You can suppress eigen_assert by defining EIGEN_NO_DEBUG before including Eigen headers. EIGEN_NO_DEBUG is undefined by default unless NDEBUG is defined.
+
+>EIGEN_NO_DEBUG - disables Eigen's assertions if defined. Not defined by default, unless the NDEBUG macro is defined (this is a standard C++ macro which disables all asserts). 
+
+So defining NDEBUG should solve both these two problems, although I gone through the trouble to test it.

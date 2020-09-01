@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Build SuiteSparse for Android 10+
+title:  Build SuiteSparse for Android 10
 categories: [Optimization, SLAM, Android]
 ---
 
@@ -16,9 +16,9 @@ There are several options for preparing BLAS & LAPACK library.
 
 2. Use a libf2c library to transform fortran source files into c files
 
-	Eigen3 uses this method to provide a blas implementation that utilize its own data structure. It's blas module is pure c/c++ and can be directly compiled, but for some reason its lapack module still keeps some fortran files. You can choose to translate them into c then compile them if you think the BLAS & LAPACK module can benefit from some Eigen design.  
+	Eigen3 uses this method to provide a blas implementation that utilize its own data structure. Its blas module is pure c/c++ and can be directly compiled, but for some reason its lapack module still keeps some fortran files. You can choose to translate them into c then compile them if you think the BLAS & LAPACK module can benefit from some Eigen design.  
 
-3. Vendor provided library, these are recommanded if available since they are optimized based on the hardware.
+3. Vendor provided library, these are recommanded if available since they are optimized based on the processors.
 
 	For Qualcomm cpu platforms there is QML(Qualcomm math library). But Qualcomm's website annources that QML-1.4.0 will be the end of it. I tested it on Android 10 & NDK-29, it still works. But it will break with future sdk versions sooner or later.
 
@@ -30,7 +30,7 @@ Original suitesparse source code uses makefile based building system. Thanks to 
 
 ## Test the suitesparse libraries on unrooted android phone
 
-1. The working directory would be /data/local/tmp. Copy everything related to test examples to this folder by adb push: libc++_shared.so, libQML-1.4.0.so, test data, and suitesparse libs. 
+1. The working directory would be /data/local/tmp. Copy everything related to test examples to this folder by adb push: libc++_shared.so, libQML-1.4.0.so, test data, and suitesparse libs... 
 
 2. Set the c++ linking directory to /data/local/tmp to force the executables link libraries from this folder instead of looking from /system/lib64
 ```shell
