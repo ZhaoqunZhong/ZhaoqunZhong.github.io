@@ -9,15 +9,20 @@ categories: [Optimization, SLAM, Android]
 There are several options for preparing BLAS & LAPACK library. 
 
 1. Figure out a gnu compiling toolchain that support both c++ and gfortran, and compile original fortran based BLAS & LAPACK, integrate it in your c++ project. 
-The tricky part is android ndk build no longer supports gcc in recent versions, clang is default, but clang doesn't support fortran language. So it comes down to build a gnu toolchain that supports both c++ and fortran, and can be used by ndk-build. 
-But if you manage to do that, there exists several LAPACK interfaces can potentially increase the performance of the final library: Lapacke, Lapack++, openblas... They are called interfaces because they don't provide the fundemental math functions in c/c++, they just wrap the fortran implementations with c/c++ to utilize some modern language feature of c/c++. 
+	
+	The tricky part is android ndk build no longer supports gcc in recent versions, clang is default, but clang doesn't support fortran language. So it comes down to build a gnu toolchain that supports both c++ and fortran, and can be used by ndk-build. 
+
+	But if you manage to do that, there exists several LAPACK interfaces can potentially increase the performance of the final library: Lapacke, Lapack++, openblas... They are called interfaces because they don't provide the fundemental math functions in c/c++, they just wrap the fortran implementations with c/c++ to utilize some modern language feature of c/c++. 
 
 2. Use a libf2c library to transform fortran source files into c files
-Eigen3 uses this method to provide a blas implementation that utilize its own data structure. It's blas module is pure c/c++ and can be directly compiled, but for some reason its lapack module still keeps some fortran files. You can choose to translate them into c then compile them if you think the BLAS & LAPACK module can benefit from some Eigen design.  
+
+	Eigen3 uses this method to provide a blas implementation that utilize its own data structure. It's blas module is pure c/c++ and can be directly compiled, but for some reason its lapack module still keeps some fortran files. You can choose to translate them into c then compile them if you think the BLAS & LAPACK module can benefit from some Eigen design.  
 
 3. Vendor provided library, these are recommanded if available since they are optimized based on the hardware.
-For Qualcomm cpu platforms there is QML(Qualcomm math library). But Qualcomm's website annources that QML-1.4.0 will be the end of it. I tested it on Android 10 & NDK-29, it still works. But it will break with future sdk versions sooner or later.
-For Intel platforms there is Inter MKL, which is recommanded by suitesparse's website against OpenBLas. But sadly it can't be used on Arm based architectures. 
+
+	For Qualcomm cpu platforms there is QML(Qualcomm math library). But Qualcomm's website annources that QML-1.4.0 will be the end of it. I tested it on Android 10 & NDK-29, it still works. But it will break with future sdk versions sooner or later.
+
+	For Intel platforms there is Inter MKL, which is recommanded by suitesparse's website against OpenBLas. But sadly it can't be used on Arm based architectures. 
 
 ## SuiteSparse
 
