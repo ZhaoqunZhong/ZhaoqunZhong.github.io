@@ -85,32 +85,30 @@ Refer to the code.
 
 Copy all test executables, data files and the .so libs the test executables depend on to /data/local/tmp of the phone. The shared libs include: 
 
-libc++_shared.so
-libomp.so
-libQML-1.4.0.so
-libamd.so
-libbtf.so
-libcamd.so
-libccolamd.so
-libcholmod.so
-libcolamd.so
-libcxsparse.so
-libgtest.so
-libklu.so
-libldl.so
-libmv_bundle_adjuster
-libmv_homography
-libspqr.so
-libtest_util.so
-libumfpack.so
-libceres.so
-
+	libc++_shared.so 	-> because of -DANDROID_STL=c++_shared
+	libomp.so 			-> OpenMp
+	libQML-1.4.0.so 	-> BLAS & LAPACK
+	libamd.so
+	libbtf.so
+	libcamd.so
+	libccolamd.so
+	libcholmod.so 		-> SuiteSparse
+	libcolamd.so
+	libcxsparse.so
+	libklu.so
+	libldl.so
+	libspqr.so 			-> SuiteSparse
+	libumfpack.so
+	libceres.so 		-> Ceres Solver
+	libgtest.so 		-> Ceres Solver test
+	libtest_util.so 	-> Ceres Solver test
+	
 ## Performance comparison
 
 I compared two ceres solver versions, one using Eigen as the sparse solver, the other uses suitesparse as the sparse solver, and compare their executing times on ceres' example pose_graph_3d. 
 
 | data set | SuiteSparse (time) | Eigen (time) |  
 | ----     | ------------| -------------------|  
-| sphere3D | 9.158805s   | 19.802575s |  
-| torus3D  | 23.173427s  | 90.262423s  |  
+| sphere3D | 9.158805s   | 19.802575s 		  |  
+| torus3D  | 23.173427s  | 90.262423s  		  |  
 | grid3D   | 214.044466s | > 30min didn't return  |  
