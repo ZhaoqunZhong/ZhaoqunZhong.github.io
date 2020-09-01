@@ -86,7 +86,7 @@ Refer to the code.
 Copy all test executables, data files and the .so libs the test executables depend on to /data/local/tmp of the phone. The shared libs include: 
 
 	libc++_shared.so 	-> because of -DANDROID_STL=c++_shared
-	libomp.so 			-> OpenMp
+	libomp.so 		-> OpenMp
 	libQML-1.4.0.so 	-> BLAS & LAPACK
 	libamd.so
 	libbtf.so
@@ -97,7 +97,7 @@ Copy all test executables, data files and the .so libs the test executables depe
 	libcxsparse.so
 	libklu.so
 	libldl.so
-	libspqr.so 			-> SuiteSparse
+	libspqr.so 		-> SuiteSparse
 	libumfpack.so
 	libceres.so 		-> Ceres Solver
 	libgtest.so 		-> Ceres Solver test
